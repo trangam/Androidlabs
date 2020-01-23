@@ -44,7 +44,8 @@
             android:id="@+id/switch1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Switch on/off" />
+            android:text="Switch on/off"
+            />
 
 
     </LinearLayout>

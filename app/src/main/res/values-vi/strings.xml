@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Android Labs</string>
+    <string name="hello_message">Nhin vao GUI!</string>
+    <string name="ButtonText">Nhan vao day</string>
+<!--    <string name="toast_message">day</string>-->
+<!--    <string name="snackbar_message_true">chuyen doi on </string>-->
+<!--    <string name="snackbar_message_false">chuyendoi off</string>-->
+<!--    <string name="snackbar_setAction_message">on</string>-->
+</resources>

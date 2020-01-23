@@ -2,4 +2,8 @@
     <string name="app_name">Android Labs</string>
     <string name="hello_message">Look at my GUI!</string>
     <string name="ButtonText">I\’m a button</string>
+<!--    <string name="toast_message">here</string>-->
+<!--    <string name="snackbar_message_true">The switch is now </string>-->
+<!--    <string name="snackbar_message_false">The switch is off</string>-->
+<!--    <string name="snackbar_setAction_message">on</string>-->
 </resources>
