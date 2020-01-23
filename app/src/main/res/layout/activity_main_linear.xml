@@ -58,6 +58,4 @@
         android:inputType="textPersonName"
         android:text="@string/Edit_Text" />
 
-
-
 </LinearLayout>
