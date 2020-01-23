@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Android Labs</string>
-    <string name="hello_message">Look at my GUI!</string>
-    <string name="ButtonText">I\’m a button</string>
-<!--    <string name="toast_message">here</string>-->
-<!--    <string name="snackbar_message_true">The switch is now </string>-->
-<!--    <string name="snackbar_message_false">The switch is off</string>-->
-<!--    <string name="snackbar_setAction_message">on</string>-->
+    <string name="firstText">Look at my GUI!</string>
+    <string name="ButtonText">Click here</string>
+    <string name="CheckBox_Text">Check this out</string>
+    <string name="Switch_Text">Switch on/off</string>
+    <string name="Edit_Text">Type Here</string>
+    <string name="toast_message">Here is more information!</string>
+    <string name="snackbar__true">The switch is now </string>
+    <string name="snackbar_false">The switch is off</string>
+    <string name="action_message">Undo</string>
 </resources>
