@@ -18,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_linear);
-        setContentView(R.layout.activity_main_grid);
+       // setContentView(R.layout.activity_main_linear);
+        //setContentView(R.layout.activity_main_grid);
         setContentView(R.layout.activity_main_relative);
         Button button= findViewById(R.id.button);
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 toast.show();
             }
         });
-         CheckBox checkBox=findViewById(R.id.checkBox) ;
+        CheckBox checkBox=findViewById(R.id.checkBox) ;
         checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (checkBox.isChecked()) {
                 Snackbar.make(checkBox, getResources().getString(R.string.snackbar__true), Snackbar.LENGTH_LONG)
@@ -40,25 +40,24 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Snackbar.make(checkBox, getResources().getString(R.string.snackbar_false), Snackbar.LENGTH_LONG).
                         setAction(getResources().getString(R.string.action_message),
-                        click -> buttonView.setChecked(!isChecked)).show();
+                                click -> buttonView.setChecked(!isChecked)).show();
             }
         });
 
         Switch switch1 = findViewById(R.id.switch1);
         switch1.setOnCheckedChangeListener((buttonView,isChecked)->  {
-            if (switch1.isChecked()){
-                Snackbar.make(switch1, getResources().getString(R.string.snackbar__true), Snackbar.LENGTH_LONG)
-                        .setAction(getResources().getString(R.string.action_message),
+                    if (switch1.isChecked()){
+                        Snackbar.make(switch1, getResources().getString(R.string.snackbar__true), Snackbar.LENGTH_LONG)
+                                .setAction(getResources().getString(R.string.action_message),
+                                        click -> buttonView.setChecked(!isChecked) ).show();
+                    }
+                    else{
+                        Snackbar.make(switch1, getResources().getString(R.string.snackbar_false),
+                                Snackbar.LENGTH_LONG).setAction(getResources().getString(R.string.action_message),
                                 click -> buttonView.setChecked(!isChecked) ).show();
-                }
-                else{
-                    Snackbar.make(switch1, getResources().getString(R.string.snackbar_false),
-                            Snackbar.LENGTH_LONG).setAction(getResources().getString(R.string.action_message),
-                            click -> buttonView.setChecked(!isChecked) ).show();
-                }
+                    }
                 }
 
-    );
+        );
     }
 }
-
