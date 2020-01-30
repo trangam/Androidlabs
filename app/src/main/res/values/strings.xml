@@ -1,10 +1,19 @@
 <resources>
     <string name="app_name">Android Labs</string>
-    <string name="firstText">Look at my GUI!</string>
-    <string name="ButtonText">Click here</string>
+    <string name="firstText">Type your email address here:</string>
+    <string name="secondText">Type your password here:</string>
+    <string name="Edit_Text">Type email here</string>
+    <string name="ButtonText">Login</string>
+    <string name="textView2">Your profile</string>
+    <string name="textView3">Your name:</string>
+    <string name="editText3">Enter your name</string>
+    <string name="textView4">Your email:</string>
+    <string name="editText4">Enter your email</string>
+    <string name="textView5">Your picture:</string>
+    <string name="textView6">Click the button above to take a picture</string>
+
     <string name="CheckBox_Text">Check this out</string>
     <string name="Switch_Text">Switch on/off</string>
-    <string name="Edit_Text">Type Here</string>
     <string name="toast_message">Here is more information!</string>
     <string name="snackbar__true">The switch is now </string>
     <string name="snackbar_false">The switch is off</string>

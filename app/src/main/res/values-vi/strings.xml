@@ -1,10 +1,19 @@
 <resources>
     <string name="app_name">Android Labs</string>
-    <string name="firstText">Nhin vao GUI!</string>
-    <string name="ButtonText">Nhan vao day</string>
+    <string name="firstText">Nhap dia chi email vao:</string>
+    <string name="secondText">Nhap vao mat khau:</string>
+    <string name="Edit_Text">Dien email vao</string>
+    <string name="ButtonText">Dang Nhap</string>
+    <string name="textView2">Tu lieu cua ban</string>
+    <string name="textView3">Ten cua ban:</string>
+    <string name="editText3">Nhap ten</string>
+    <string name="textView4">Email cua ban:</string>
+    <string name="editText4">Nhap email</string>
+    <string name="textView5">Anh cua ban:</string>
+    <string name="textView6">Nhan vao nut phia tren de chon anh</string>
+
     <string name="CheckBox_Text">Kiem tra xem</string>
     <string name="Switch_Text">Chuyen bat/tat</string>
-    <string name="Edit_Text">Dien vao</string>
     <string name="toast_message">Them thong tin</string>
     <string name="snackbar__true">Khoi dong switch </string>
     <string name="snackbar_false">Tat switch</string>

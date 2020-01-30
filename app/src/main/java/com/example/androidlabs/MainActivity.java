@@ -1,11 +1,17 @@
 package com.example.androidlabs;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -14,50 +20,57 @@ import com.google.android.material.snackbar.Snackbar;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    SharedPreferences prefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_main_linear);
-        //setContentView(R.layout.activity_main_grid);
-        setContentView(R.layout.activity_main_relative);
-        Button button= findViewById(R.id.button);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Toast toast = Toast.makeText(getApplicationContext(),
-                        getResources().getString(R.string.toast_message) ,
-                        Toast.LENGTH_LONG);
-                toast.show();
-            }
+        setContentView(R.layout.activity_main_layout);
+
+        EditText email = findViewById(R.id.editText1);
+        Button saveButton = (Button) findViewById(R.id.button);
+        Intent nextPage = new Intent(MainActivity.this, ProfileActivity.class);
+        prefs = getSharedPreferences("FileName", Context.MODE_PRIVATE);
+        String savedString = prefs.getString("ReserveName", "");
+        email.setText(savedString);
+        saveButton.setOnClickListener(click-> {
+            saveSharedPrefs(email.getText().toString());
+            nextPage.putExtra("EMAIL", email.getText().toString());
+            startActivity(nextPage);
+
         });
-        CheckBox checkBox=findViewById(R.id.checkBox) ;
-        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (checkBox.isChecked()) {
-                Snackbar.make(checkBox, getResources().getString(R.string.snackbar__true), Snackbar.LENGTH_LONG)
-                        .setAction(getResources().getString(R.string.action_message),
-                                click -> buttonView.setChecked(!isChecked)).show();
-            } else {
-                Snackbar.make(checkBox, getResources().getString(R.string.snackbar_false), Snackbar.LENGTH_LONG).
-                        setAction(getResources().getString(R.string.action_message),
-                                click -> buttonView.setChecked(!isChecked)).show();
-            }
-        });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
-        Switch switch1 = findViewById(R.id.switch1);
-        switch1.setOnCheckedChangeListener((buttonView,isChecked)->  {
-                    if (switch1.isChecked()){
-                        Snackbar.make(switch1, getResources().getString(R.string.snackbar__true), Snackbar.LENGTH_LONG)
-                                .setAction(getResources().getString(R.string.action_message),
-                                        click -> buttonView.setChecked(!isChecked) ).show();
-                    }
-                    else{
-                        Snackbar.make(switch1, getResources().getString(R.string.snackbar_false),
-                                Snackbar.LENGTH_LONG).setAction(getResources().getString(R.string.action_message),
-                                click -> buttonView.setChecked(!isChecked) ).show();
-                    }
-                }
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-        );
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+
+    private void saveSharedPrefs(String stringToSave)
+    {
+       SharedPreferences prefs = getSharedPreferences("FileName", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("TypedText", stringToSave);
+        editor.commit();
+
+
+
     }
 }
+
