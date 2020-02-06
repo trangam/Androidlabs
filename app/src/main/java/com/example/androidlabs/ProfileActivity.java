@@ -34,6 +34,12 @@ public class ProfileActivity extends AppCompatActivity {
         });
         Intent dataSent = getIntent();
         emailEditText.setText(dataSent.getStringExtra("EMAIL"));
+
+        Button chatButton=findViewById(R.id.button2);
+        Intent nextAct = new Intent(this, ChatRoomActivity.class);
+        chatButton.setOnClickListener(click-> {
+            startActivity(nextAct);
+        });
        Log.e(ACTIVITY_NAME,"In onCreate()") ;
 
     }

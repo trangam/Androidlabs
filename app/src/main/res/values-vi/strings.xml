@@ -11,7 +11,18 @@
     <string name="editText4">Nhap email</string>
     <string name="textView5">Anh cua ban:</string>
     <string name="textView6">Nhan vao nut phia tren de chon anh</string>
-
+    <string name="button2">Den phong chat</string>
+    <string name="send">GUI</string>
+    <string name="receive">NHAN</string>
+    <string name="yes">Xoa</string>
+    <string name="no">Khong</string>
+    <string name="cancel">Huy bo</string>
+    <string name="yes_message">Tin nhan da bi xoa thanh cong</string>
+    <string name="no_message">Huy xoa tin nhan</string>
+    <string name="delete">Ban muon xoa tin nay?</string>
+    <string name="row_selected">Hang duoc chon la: </string>
+    <string name="database_id">So id cua tin nhan la: </string>
+    <string name="text">Nhap o day</string>
     <string name="CheckBox_Text">Kiem tra xem</string>
     <string name="Switch_Text">Chuyen bat/tat</string>
     <string name="toast_message">Them thong tin</string>
