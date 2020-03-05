@@ -36,7 +36,6 @@ public class WeatherForecast extends AppCompatActivity {
     TextView uvRate;
     ImageView currentWeather;
     HttpURLConnection urlConnection;
-    TextView iconV;
 
     private static final String UVAPI="http://api.openweathermap.org/data/2.5/uvi?appid=7e943c97096a9784391a981c4d878b22&lat=45.348945&lon=-75.759389";
     private static final String IMAGE="http://openweathermap.org/img/w/";
@@ -100,29 +99,28 @@ public class WeatherForecast extends AppCompatActivity {
                         }
                        else if(xpp.getName().equals("weather")){
                             icon=xpp.getAttributeValue(null, "icon");
-//                            String fileName=icon+".png";
-//                            Log.i("fileName",icon+".png");
-//                            if (fileExistance(fileName)){
-//                                FileInputStream fis = null;
-//                                try {
-//                                    fis = openFileInput(fileName);   }
-//                                catch (FileNotFoundException e) {
-//                                    e.printStackTrace();  }
-//                                image = BitmapFactory.decodeStream(fis);
-//
-//                            }
-//                            else{
-//                              image= HTTPImage.getImage( WeatherForecast.IMAGE+ icon + ".png");
-//
-//                                    try {
-//                                        FileOutputStream outputStream = openFileOutput(icon + ".png", Context.MODE_PRIVATE);
-//                                        image.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
-//                                        outputStream.flush();
-//                                        outputStream.close();
-//                                    }catch(Exception e){}
-//
-//                            }
+                            String fileName=icon+".png";
+                            Log.i("fileName",icon+".png");
+                            if (fileExistance(fileName)){
+                                FileInputStream fis = null;
+                                try {
+                                    fis = openFileInput(fileName);   }
+                                catch (FileNotFoundException e) {
+                                    e.printStackTrace();  }
+                                image = BitmapFactory.decodeStream(fis);
 
+                            }
+                            else{
+                              image= HTTPImage.getImage( WeatherForecast.IMAGE+ icon + ".png");
+
+                                    try {
+                                        FileOutputStream outputStream = openFileOutput(icon + ".png", Context.MODE_PRIVATE);
+                                        image.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
+                                        outputStream.flush();
+                                        outputStream.close();
+                                    }catch(Exception e){}
+
+                            }
                         }
                         publishProgress(100);
                     }
@@ -175,48 +173,46 @@ public class WeatherForecast extends AppCompatActivity {
         //Type3
         public void onPostExecute(String fromDoInBackground)
         {
-            iconV=findViewById(R.id.textView7);
             currentTemp=findViewById(R.id.currentTemp);
             minTemp=findViewById(R.id.minTemp);
             maxTemp=findViewById(R.id.maxTemp);
             uvRate=findViewById(R.id.uvRate);
             currentWeather=findViewById(R.id.currentWeather);
-  //          currentWeather.setImageBitmap(image);
+            currentWeather.setImageBitmap(image);
             currentTemp.setText("The current temperature is "+ current +"°C");
             minTemp.setText("The min temperature is "+min+"°C");
             maxTemp.setText("The max temperature is "+max+"°C");
             uvRate.setText("The UV is "+uvRating);
             bar.setVisibility(View.INVISIBLE);
-            iconV.setText(icon);
             Log.i("HTTP", fromDoInBackground);
         }
     }
-//    private  static class HTTPImage{
-//        public static Bitmap getImage(URL url){
-//            HttpURLConnection urlConnection=null;
-//
-//            try{
-//                urlConnection = (HttpURLConnection) url.openConnection();
-//                urlConnection.connect();
-//                int responseCode = urlConnection.getResponseCode();
-//                if (responseCode == 200) {
-//                    return BitmapFactory.decodeStream(urlConnection.getInputStream());
-//                }
-//                else return null;
-//        }
-//            catch (Exception e){
-//                return null;
-//            }
-//    }
-//    public static Bitmap getImage(String path)
-//    {
-//        try {
-//            URL url = new URL(path);
-//            return getImage(url);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }    }
+    private  static class HTTPImage{
+        public static Bitmap getImage(URL url){
+            HttpURLConnection urlConnection=null;
+
+            try{
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.connect();
+                int responseCode = urlConnection.getResponseCode();
+                if (responseCode == 200) {
+                    return BitmapFactory.decodeStream(urlConnection.getInputStream());
+                }
+                else return null;
+        }
+            catch (Exception e){
+                return null;
+            }
+    }
+    public static Bitmap getImage(String path)
+    {
+        try {
+            URL url = new URL(path);
+            return getImage(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }    }
 
 }
