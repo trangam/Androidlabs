@@ -7,37 +7,47 @@
     android:layout_height="match_parent">
 
 
-    <TextView android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/firstText"
         android:layout_width="wrap_content"
-        android:textSize="20sp"
+        android:layout_height="wrap_content"
         android:text="@string/firstText"
-        android:id="@+id/firstText"/>
+        android:textSize="20sp"
+
+    />
 
     <EditText
         android:id="@+id/editText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/Edit_Text"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress"
+
+    />
 
     <TextView android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textSize="20sp"
         android:text="@string/secondText"
-        android:id="@+id/secondText"/>
+        android:id="@+id/secondText"
+
+    />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        />
+
+    />
 
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ButtonText" />
+        android:text="@string/ButtonText"
+
+    />
 
 
 
