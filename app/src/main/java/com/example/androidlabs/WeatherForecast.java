@@ -182,7 +182,7 @@ public class WeatherForecast extends AppCompatActivity {
             currentTemp.setText("Current temperature: "+ current +"°C");
             minTemp.setText("Min temperature: "+min+"°C");
             maxTemp.setText("Max temperature: "+max+"°C");
-            uvRate.setText("The UV is "+uvRating);
+            uvRate.setText("UV: "+uvRating);
             bar.setVisibility(View.INVISIBLE);
             Log.i("HTTP", fromDoInBackground);
         }
