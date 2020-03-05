@@ -22,6 +22,8 @@
         android:layout_height="wrap_content"
         android:text="@string/Edit_Text"
         android:inputType="textEmailAddress"
+        android:nextFocusDown="@id/editText2"
+        android:nextFocusRight="@id/editText2"
 
     />
 
@@ -38,6 +40,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
+        android:nextFocusDown="@id/button"
+        android:nextFocusUp="@id/editText1"
+        android:nextFocusRight="@id/button"
+        android:nextFocusLeft="@id/editText1"
 
     />
 
@@ -46,6 +52,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/ButtonText"
+        android:nextFocusUp="@id/editText2"
+        android:nextFocusLeft="@id/editText2"
 
     />
 
