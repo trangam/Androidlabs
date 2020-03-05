@@ -179,9 +179,9 @@ public class WeatherForecast extends AppCompatActivity {
             uvRate=findViewById(R.id.uvRate);
             currentWeather=findViewById(R.id.currentWeather);
             currentWeather.setImageBitmap(image);
-            currentTemp.setText("The current temperature is "+ current +"°C");
-            minTemp.setText("The min temperature is "+min+"°C");
-            maxTemp.setText("The max temperature is "+max+"°C");
+            currentTemp.setText("Current temperature: "+ current +"°C");
+            minTemp.setText("Min temperature: "+min+"°C");
+            maxTemp.setText("Max temperature: "+max+"°C");
             uvRate.setText("The UV is "+uvRating);
             bar.setVisibility(View.INVISIBLE);
             Log.i("HTTP", fromDoInBackground);
