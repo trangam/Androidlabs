@@ -42,7 +42,7 @@ public class WeatherForecast extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_weather_forecast);
+        setContentView(R.layout.layout_round);
         bar=findViewById(R.id.progressBar);
         bar.setVisibility(View.VISIBLE);
         ForecastQuery req = new ForecastQuery();
