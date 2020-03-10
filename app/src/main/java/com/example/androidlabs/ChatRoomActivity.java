@@ -3,36 +3,29 @@ package com.example.androidlabs;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.sql.Types.INTEGER;
 
 public class ChatRoomActivity extends AppCompatActivity {
     private ListView listView;
@@ -95,7 +88,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         receive = (Button) findViewById(R.id.receive);
         editText = (EditText) findViewById(R.id.editText4);
         sql = helper.getWritableDatabase();
-        helper.onUpgrade(sql,1, 1);
+      //  helper.onUpgrade(sql,1, 1);
 
         ArrayList<Message> arrayList = new ArrayList<>();
         ChatAdapter arrayAdapter = new ChatAdapter(this, android.R.layout.simple_list_item_1, arrayList);
@@ -128,15 +121,14 @@ public class ChatRoomActivity extends AppCompatActivity {
             editText.getText().clear();
         });
 
-/*
+
       frameLayout=findViewById(R.id.fragmentLocation);
         boolean isTablet = frameLayout!= null;
         listView.setOnItemLongClickListener((AdapterView<?> parent, View view, int position, long id) -> {
 
             Bundle dataToPass = new Bundle();
-            dataToPass.putString(ITEM_MESSAGE, parent.getAdapter().getItem(position).toString() );
+            dataToPass.putString(ITEM_MESSAGE,arrayList.get(position).getMessage() );
             dataToPass.putLong(ITEM_ID, id);
-
             if(isTablet)
             {
                 DetailsFragment dFragment = new DetailsFragment(); //add a DetailFragment
@@ -153,7 +145,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                 startActivity(nextActivity); //make the transition
             }
             return listView.isLongClickable();
-        });*/
+        });
     }
 
     @Override
