@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -18,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,12 +43,14 @@ public class ChatRoomActivity extends AppCompatActivity {
     private ContentValues value = new ContentValues();
     private Cursor cursor;
     private SQLiteDatabase sql;
-
-
+    private FrameLayout frameLayout;
+    public static final String ITEM_MESSAGE = "MESSAGE";
+    public static final String ITEM_ID = "ID";
     class ChatAdapter extends BaseAdapter {
         private List<Message> list;
         private int sendOrReceive;
         private Context context;
+
 
         public ChatAdapter(Context context, int layout, List<Message> list) {
             this.list = list;
@@ -123,29 +127,32 @@ public class ChatRoomActivity extends AppCompatActivity {
             editText.getText().clear();
         });
 
+/*
+      frameLayout=findViewById(R.id.fragmentLocation);
+        boolean isTablet = frameLayout!= null;
         listView.setOnItemLongClickListener((AdapterView<?> parent, View view, int position, long id) -> {
 
-            Message message = (Message)  parent.getAdapter().getItem(position);
+            Bundle dataToPass = new Bundle();
+            dataToPass.putString(ITEM_MESSAGE, parent.getAdapter().getItem(position).toString() );
+            dataToPass.putLong(ITEM_ID, id);
 
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder
-                    .setTitle(getString(R.string.delete))
-                    .setMessage(getString(R.string.row_selected) + " " + position + "\n" +
-                            getString(R.string.database_id) + " " + id)
-                    .setPositiveButton(R.string.yes, (DialogInterface dialog, int which) -> {
-                        sql.delete(DatabaseMessage.TABLE_NAME, DatabaseMessage.COL_ID + "=" + message.getId(), null);
-                        arrayList.remove(position);
-                        arrayAdapter.notifyDataSetChanged();
-                        Toast.makeText(ChatRoomActivity.this, getString(R.string.yes_message), Toast.LENGTH_LONG).show();
-                    })
-                    .setNegativeButton(R.string.no, (DialogInterface dialog, int which)->{
-                    Toast.makeText(ChatRoomActivity.this, getString(R.string.no_message), Toast.LENGTH_LONG).show();});
-
-            AlertDialog alertDialog=alertDialogBuilder.create();
-            alertDialog.show();
-
+            if(isTablet)
+            {
+                DetailsFragment dFragment = new DetailsFragment(); //add a DetailFragment
+                dFragment.setArguments( dataToPass ); //pass it a bundle for information
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentLocation, dFragment) //Add the fragment in FrameLayout
+                        .commit(); //actually load the fragment.
+            }
+            else //isPhone
+            {
+                Intent nextActivity = new Intent(this, EmptyActivity.class);
+                nextActivity.putExtras(dataToPass); //send data to next activity
+                startActivity(nextActivity); //make the transition
+            }
             return listView.isLongClickable();
-        });
+        });*/
     }
 
     @Override
