@@ -95,6 +95,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         receive = (Button) findViewById(R.id.receive);
         editText = (EditText) findViewById(R.id.editText4);
         sql = helper.getWritableDatabase();
+        helper.onUpgrade(sql,1, 1);
 
         ArrayList<Message> arrayList = new ArrayList<>();
         ChatAdapter arrayAdapter = new ChatAdapter(this, android.R.layout.simple_list_item_1, arrayList);
