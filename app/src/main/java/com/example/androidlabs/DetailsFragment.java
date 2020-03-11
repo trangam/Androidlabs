@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 
@@ -89,6 +90,9 @@ private Bundle dataFromActivity;
         //show the id:
         TextView idView = (TextView)result.findViewById(R.id.idText);
         idView.setText("ID=" + id);
+
+        CheckBox checkBox=(CheckBox)result.findViewById(R.id.checkBox2);
+        checkBox.setChecked(dataFromActivity.getBoolean(ChatRoomActivity.IS_SEND));
 
         // get the delete button, and add a click listener:
         Button finishButton = (Button)result.findViewById(R.id.finishButton);

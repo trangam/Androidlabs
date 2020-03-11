@@ -3,6 +3,7 @@ package com.example.androidlabs;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,10 +20,13 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +43,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     private FrameLayout frameLayout;
     public static final String ITEM_MESSAGE = "MESSAGE";
     public static final String ITEM_ID = "ID";
+    public static final String IS_SEND = "IS_SEND";
     class ChatAdapter extends BaseAdapter {
         private List<Message> list;
         private int sendOrReceive;
@@ -121,14 +126,16 @@ public class ChatRoomActivity extends AppCompatActivity {
             editText.getText().clear();
         });
 
-
       frameLayout=findViewById(R.id.fragmentLocation);
         boolean isTablet = frameLayout!= null;
-        listView.setOnItemLongClickListener((AdapterView<?> parent, View view, int position, long id) -> {
+        listView.setOnItemClickListener((AdapterView<?> parent, View view, int position, long id) -> {
+
+            Message message = (Message) parent.getAdapter().getItem(position);
 
             Bundle dataToPass = new Bundle();
-            dataToPass.putString(ITEM_MESSAGE,arrayList.get(position).getMessage() );
-            dataToPass.putLong(ITEM_ID, id);
+            dataToPass.putString(ITEM_MESSAGE,message.getMessage() );
+            dataToPass.putLong(ITEM_ID, message.getId());
+            dataToPass.putBoolean(IS_SEND, message.getSendOrReceive() == R.layout.send_layout);
             if(isTablet)
             {
                 DetailsFragment dFragment = new DetailsFragment(); //add a DetailFragment
@@ -144,8 +151,37 @@ public class ChatRoomActivity extends AppCompatActivity {
                 nextActivity.putExtras(dataToPass); //send data to next activity
                 startActivity(nextActivity); //make the transition
             }
+
+        });
+        listView.setOnItemLongClickListener((AdapterView<?> parent, View view, int position, long id) -> {
+
+            Message message = (Message)  parent.getAdapter().getItem(position);
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder
+                    .setTitle(getString(R.string.delete))
+                    .setMessage(getString(R.string.row_selected) + " " + position + "\n" +
+                            getString(R.string.database_id) + " " + id)
+                    .setPositiveButton(R.string.yes, (DialogInterface dialog, int which) -> {
+                        sql.delete(DatabaseMessage.TABLE_NAME, DatabaseMessage.COL_ID + "=" + message.getId(), null);
+                        arrayList.remove(position);
+            for(Fragment fragment: getSupportFragmentManager().getFragments()){
+                if(fragment.getArguments().getLong(ITEM_ID)==id){
+                   getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+                }
+}
+                        arrayAdapter.notifyDataSetChanged();
+                        Toast.makeText(ChatRoomActivity.this, getString(R.string.yes_message), Toast.LENGTH_LONG).show();
+                    })
+                    .setNegativeButton(R.string.no, (DialogInterface dialog, int which)->{
+                        Toast.makeText(ChatRoomActivity.this, getString(R.string.no_message), Toast.LENGTH_LONG).show();});
+
+            AlertDialog alertDialog=alertDialogBuilder.create();
+            alertDialog.show();
+
             return listView.isLongClickable();
         });
+
     }
 
     @Override
