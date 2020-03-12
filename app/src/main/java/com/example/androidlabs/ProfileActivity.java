@@ -43,7 +43,13 @@ public class ProfileActivity extends AppCompatActivity {
         Button weatherButton=findViewById(R.id.weather);
         Intent weAct =new Intent(this, WeatherForecast.class);
         weatherButton.setOnClickListener(click-> startActivity(weAct));
-       Log.e(ACTIVITY_NAME,"In onCreate()") ;
+
+        Button toolbar=findViewById(R.id.toolbar);
+        Intent toolAct =new Intent(this, TestToolbar.class);
+        weatherButton.setOnClickListener(click->
+                startActivity(toolAct));
+
+        Log.e(ACTIVITY_NAME,"In onCreate()") ;
 
     }
 
@@ -55,12 +61,13 @@ public class ProfileActivity extends AppCompatActivity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         ImageButton imageButton = findViewById(R.id.imageButton2);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             imageButton.setImageBitmap(imageBitmap);
-            Log.e(ACTIVITY_NAME,"In onActivityResult()") ;
+            Log.e(ACTIVITY_NAME, "In onActivityResult()");
         }
     }
 
