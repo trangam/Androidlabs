@@ -46,7 +46,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         Button toolbar=findViewById(R.id.toolbar);
         Intent toolAct =new Intent(this, TestToolbar.class);
-        weatherButton.setOnClickListener(click->
+        toolbar.setOnClickListener(click->
                 startActivity(toolAct));
 
         Log.e(ACTIVITY_NAME,"In onCreate()") ;
