@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="Weather"
+        android:id="@+id/item_weather"
+        android:icon="@drawable/weather"
+        android:orderInCategory="25"
+        />
+    <item
+        android:id="@+id/item_chatPage"
+        android:title="ChatRoom"
+        android:icon="@drawable/sms"
+        android:orderInCategory="50"
+        />
+    <item
+        android:id="@+id/item_login"
+        android:icon="@drawable/user"
+        android:title="Go back to login"
+        android:orderInCategory="90" />
+</menu>

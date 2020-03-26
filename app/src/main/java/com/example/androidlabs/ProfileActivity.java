@@ -47,7 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
         Button toolbar=findViewById(R.id.toolbar);
         Intent toolAct =new Intent(this, TestToolbar.class);
         toolbar.setOnClickListener(click->
-                startActivity(toolAct));
+                startActivityForResult(toolAct,500));
 
         Log.e(ACTIVITY_NAME,"In onCreate()") ;
 
@@ -67,8 +67,11 @@ public class ProfileActivity extends AppCompatActivity {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             imageButton.setImageBitmap(imageBitmap);
-            Log.e(ACTIVITY_NAME, "In onActivityResult()");
         }
+        if(resultCode==500){
+            finish();
+        }
+        Log.e(ACTIVITY_NAME, "In onActivityResult()");
     }
 
     @Override

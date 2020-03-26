@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Weather"
+        android:id="@+id/item1"
+        android:icon="@drawable/tomato"
+        app:showAsAction="always"
+        android:orderInCategory="25"
+        />
+    <item
+        android:id="@+id/item2"
+        android:title="ChatRoom"
+        android:icon="@drawable/carrot"
+        app:showAsAction="always"
+        android:orderInCategory="50"
+        />
+    <item
+        android:id="@+id/item3"
+        android:icon="@drawable/mushroom"
+        android:title="Go back to login"
+        android:orderInCategory="90"
+        app:showAsAction="always"/>
+    <item android:title="About"
+          android:id="@+id/overflow"
+          android:orderInCategory="100"
+        />
+
+</menu>

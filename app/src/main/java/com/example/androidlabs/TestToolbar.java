@@ -20,8 +20,10 @@ import com.google.android.material.navigation.NavigationView;
 
 
 public class TestToolbar extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-private DrawerLayout mDrawerLayout;
+    public static int resultCode;
+    private DrawerLayout mDrawerLayout;
 private ActionBarDrawerToggle mToggle;
+private MenuItem item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,7 @@ private ActionBarDrawerToggle mToggle;
 
         NavigationView navigationView=findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflate=getMenuInflater();
@@ -48,24 +51,19 @@ private ActionBarDrawerToggle mToggle;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
+
         switch (item.getItemId()) {
-            case R.id.item_weather:
-                Toast toast1 = Toast.makeText(getApplicationContext(), "item weather selected", Toast.LENGTH_SHORT);
+            case R.id.item1:
+                Toast toast1 = Toast.makeText(getApplicationContext(), "You clicked item 1", Toast.LENGTH_SHORT);
                 toast1.show();
-                Intent weather_act= new Intent(this, WeatherForecast.class);
-                startActivity(weather_act);
                 return true;
-            case R.id.item_chatPage:
-                    Toast toast2 = Toast.makeText(getApplicationContext(), "item chat room selected", Toast.LENGTH_SHORT);
+            case R.id.item2:
+                    Toast toast2 = Toast.makeText(getApplicationContext(), "You clicked item 2 ", Toast.LENGTH_SHORT);
                     toast2.show();
-                    Intent chatRoom_act=new Intent(this, ChatRoomActivity.class);
-                    startActivity(chatRoom_act);
                 return true;
-            case R.id.item_login:
-                Toast toast3 = Toast.makeText(getApplicationContext(), "item login selected", Toast.LENGTH_SHORT);
+            case R.id.item3:
+                Toast toast3 = Toast.makeText(getApplicationContext(), "You clicked item 3", Toast.LENGTH_SHORT);
                 toast3.show();
-                Intent login_act=new Intent(this, ProfileActivity.class);
-                startActivity(login_act);
                 return true;
             case R.id.overflow:
                 Toast toast4 = Toast.makeText(getApplicationContext(), "You clicked overflow", Toast.LENGTH_SHORT);
@@ -94,8 +92,8 @@ private ActionBarDrawerToggle mToggle;
             case R.id.item_login:
                 Toast toast3 = Toast.makeText(getApplicationContext(), "item login selected", Toast.LENGTH_SHORT);
                 toast3.show();
-                Intent login_act=new Intent(this, ProfileActivity.class);
-                startActivity(login_act);
+                setResult(500);
+                finish();
                break;
             default:
                 return super.onOptionsItemSelected(item);

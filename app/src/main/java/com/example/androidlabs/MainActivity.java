@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         Button saveButton = (Button) findViewById(R.id.button);
         Intent nextPage = new Intent(MainActivity.this, ProfileActivity.class);
         prefs = getSharedPreferences("FileName", Context.MODE_PRIVATE);
-        String savedString = prefs.getString("ReserveName", "");
+        String savedString = prefs.getString("TypedText", "");
         email.setText(savedString);
         saveButton.setOnClickListener(click-> {
             saveSharedPrefs(email.getText().toString());
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
     }
 
     @Override
@@ -64,11 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void saveSharedPrefs(String stringToSave)
     {
-       SharedPreferences prefs = getSharedPreferences("FileName", Context.MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences("FileName", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("TypedText", stringToSave);
         editor.commit();
-
 
     }
 }
